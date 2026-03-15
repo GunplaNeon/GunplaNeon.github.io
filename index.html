@@ -6,11 +6,13 @@
   <title>GunplaNeon</title>
   <style>
     :root {
-      --bg: #f5f5f7;
-      --text: #1d1d1f;
-      --muted: #6e6e73;
-      --card: #ffffff;
-      --border: #e5e5e7;
+      --bg: #0a0a0a;
+      --bg-elevated: #111111;
+      --text: #f2f2f2;
+      --muted: #a1a1a1;
+      --border: #2a2a2a;
+      --accent: #f2df1d;
+      --accent-hover: #ffe94a;
     }
 
     * {
@@ -19,48 +21,75 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
+      background-image:
+        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+        url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
     }
 
     .wrap {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 32px 20px 80px;
+      padding: 28px 24px 80px;
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 14px 0 22px;
+      border-bottom: 1px solid var(--border);
       margin-bottom: 56px;
     }
 
-    nav a {
-      color: var(--text);
+    .brand {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
       text-decoration: none;
-      margin-left: 18px;
-      font-size: 14px;
+      letter-spacing: -0.04em;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+
+    nav a:hover {
+      color: var(--accent-hover);
     }
 
     .hero {
-      padding: 48px 0 32px;
+      padding: 24px 0 36px;
+      border-bottom: 1px solid var(--border);
     }
 
     h1 {
-      font-size: clamp(40px, 7vw, 72px);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-      margin: 0 0 16px;
+      font-size: clamp(2.7rem, 7vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin: 0 0 14px;
+      color: var(--text);
     }
 
     .sub {
-      font-size: 20px;
-      line-height: 1.5;
+      font-size: 1.12rem;
+      line-height: 1.7;
       color: var(--muted);
-      max-width: 700px;
-      margin-bottom: 28px;
+      max-width: 760px;
+      margin-bottom: 26px;
     }
 
     .buttons {
@@ -72,96 +101,132 @@
     .btn {
       display: inline-block;
       padding: 12px 18px;
-      border-radius: 999px;
       text-decoration: none;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      font-weight: 600;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .section-title {
+      margin: 48px 0 18px;
+      font-size: 1.5rem;
+      color: var(--accent);
+      letter-spacing: -0.03em;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 18px;
-      margin-top: 40px;
     }
 
     .card {
-      background: var(--card);
+      background: rgba(17, 17, 17, 0.88);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 24px;
+      padding: 22px;
+      min-height: 180px;
     }
 
     .card h2 {
-      margin-top: 0;
-      font-size: 22px;
-      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+      color: var(--accent);
+      letter-spacing: -0.03em;
     }
 
     .card p {
+      margin: 0;
       color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 0;
+      line-height: 1.7;
+      font-size: 0.98rem;
     }
 
     footer {
-      margin-top: 56px;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
       color: var(--muted);
-      font-size: 14px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .brand {
+        font-size: 1.7rem;
+      }
+
+      nav .nav-links {
+        gap: 14px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <nav>
-      <strong>GunplaNeon</strong>
-      <div>
-        <a href="#about">About</a>
-        <a href="#links">Links</a>
+      <a class="brand" href="#">gunplaneon</a>
+      <div class="nav-links">
+        <a href="#about">about</a>
+        <a href="#builds">builds</a>
+        <a href="#links">links</a>
+        <a href="#contact">contact</a>
       </div>
     </nav>
 
     <section class="hero">
-      <h1>Your 7th favorite gunpla streamer.</h1>
+      <h1>build. paint. stream.</h1>
       <p class="sub">
-        Welcome to my landing page — a clean home for my Gunpla builds, stream updates,
-        socials, and blog posts.
+        GunplaNeon is my home base for Gunpla builds, stream updates, social links,
+        and future hobby writeups — all in one place.
       </p>
       <div class="buttons">
-        <a class="btn" href="https://twitch.tv/gunplaneon" target="_blank" rel="noreferrer">Twitch</a>
-        <a class="btn" href="https://youtube.com/@gunplaneon" target="_blank" rel="noreferrer">YouTube</a>
-        <a class="btn" href="https://instagram.com/gunplaneon" target="_blank" rel="noreferrer">Instagram</a>
+        <a class="btn" href="https://twitch.tv/gunplaneon" target="_blank">twitch</a>
+        <a class="btn" href="#">youtube</a>
+        <a class="btn" href="#">discord</a>
       </div>
     </section>
 
+    <h2 class="section-title">overview</h2>
     <section class="grid">
       <div class="card" id="about">
-        <h2>About</h2>
+        <h2>about</h2>
         <p>
-          A millenial builder that collects hobbies, with his favorite being Gunpla building.
+          I stream Gunpla building, hobby discussion, and creator-side projects with
+          a clean visual style and a focus on chill, thoughtful content.
         </p>
       </div>
 
-      <div class="card">
-        <h2>Current Focus</h2>
+      <div class="card" id="builds">
+        <h2>current focus</h2>
         <p>
-          Building a clean home base for my streams, build logs, and social links.
+          Building out a proper home for my projects, build logs, stream recaps,
+          and future guides for people who like Gunpla and mecha culture.
         </p>
       </div>
 
       <div class="card" id="links">
-        <h2>Links</h2>
+        <h2>links</h2>
         <p>
-          GunplaNeon@gmail.com
-          Add your Discord, business email, affiliate links, and future pages here.
+          Twitch, YouTube, Discord, Instagram, affiliate links, and whatever else
+          becomes part of the GunplaNeon ecosystem later.
         </p>
       </div>
     </section>
 
-    <footer>
-      © 2026 GunplaNeon
+    <footer id="contact">
+      © 2026 gunplaneon
     </footer>
   </div>
 </body>
